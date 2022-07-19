@@ -19,12 +19,13 @@ public class NorthwindApplication {
 	}
 	
 	// Bean api'leri swagger dökümanına .çeviriyor.
+	/*
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
           .select()                                  
           .apis(RequestHandlerSelectors.basePackage("com.talha.northwind"))                                    
           .build();                                           
-    }
+    }*/
 
 }
