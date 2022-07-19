@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.talha.northwind.business.abstracts.ProductService;
 import com.talha.northwind.entities.concretes.Product;
-
+// Result yapısı eklendi.
 // Kontroller olduğunu belirttik. Ve Yolunu belirttik.
 @RestController
 @RequestMapping("/api/products")
