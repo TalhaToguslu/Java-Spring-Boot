@@ -18,9 +18,9 @@ public class ProductsController {
 	private ProductService _productService;
 
 	@Autowired
-	public ProductsController(ProductService _productService) {
+	public ProductsController(ProductService productService) {
 		super();
-		this._productService = _productService;
+		this._productService = productService;
 	}
 
 	@GetMapping("/getall")
