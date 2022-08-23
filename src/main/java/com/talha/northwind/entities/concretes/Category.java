@@ -26,6 +26,6 @@ public class Category {
 	@Column(name="category_name")
 	private String categoryName;
 	
-	@OneToMany(mappedBy = "categories") // Burada @JoinColumn yapmadık zaten ID'den gidiyor. category_id
+	@OneToMany(mappedBy = "category") // Burada @JoinColumn yapmadık zaten ID'den gidiyor. category_id
 	private List<Product> products;
 }
