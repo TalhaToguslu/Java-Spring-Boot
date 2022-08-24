@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="categories")
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","products"})
 public class Category {
 	
 	@Id

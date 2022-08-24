@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.talha.northwind.business.abstracts.ProductService;
+import com.talha.northwind.core.utilities.result.DataResult;
+import com.talha.northwind.core.utilities.result.SuccessDataResult;
 import com.talha.northwind.entities.concretes.Product;
 // Result yapısı eklendi.
 // Kontroller olduğunu belirttik. Ve Yolunu belirttik.
@@ -24,7 +26,7 @@ public class ProductsController {
 	}
 
 	@GetMapping("/getall")
-	public List<Product> getAll(){
-		return this._productService.GetAll();
+	public DataResult<List<Product>> getAll(){
+		return new SuccessDataResult<List<Product>>("zartzort", this._productService.GetAll());
 	}
 }

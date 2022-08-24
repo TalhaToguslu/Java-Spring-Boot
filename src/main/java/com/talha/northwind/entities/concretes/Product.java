@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 @Table(name= "products")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLaztInitializer", "hanlder", "products"})
 public class Product {	
 	
 	//ID'yi belirtmen lazım.

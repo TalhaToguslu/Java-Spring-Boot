@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import springfox.documentation.builders.PathSelectors;
@@ -15,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @ComponentScan({"com.talha.northwind.dataAccess"})
+@ComponentScan({"com.talha.northwind.api"})
 public class NorthwindApplication {
 
 	public static void main(String[] args) {
@@ -22,13 +24,14 @@ public class NorthwindApplication {
 	}
 	
 	// Bean api'leri swagger dökümanına .çeviriyor.
-	/*
+/*
 	@Bean
     public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.basePackage("com.talha.northwind"))                                    
-          .build();                                           
+		return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build();                                          
     }*/
 
 }
