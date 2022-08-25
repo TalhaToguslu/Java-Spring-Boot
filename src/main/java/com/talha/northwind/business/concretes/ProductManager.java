@@ -3,29 +3,25 @@ package com.talha.northwind.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Service;
 
 import com.talha.northwind.business.abstracts.ProductService;
+import com.talha.northwind.core.utilities.result.DataResult;
 import com.talha.northwind.dataAccess.abstarcts.ProductDao;
 import com.talha.northwind.entities.concretes.Product;
+import com.talha.northwind.entities.dtos.ProductWithCategoryDto;
+
+import lombok.NoArgsConstructor;
 
 // Bu class servis olacak demektir spring'te.
 @Service
 public class ProductManager implements ProductService{
 
-	private ProductDao _productDao;
-	
-	// Autowired, direkt productDao'ya karşılık gelecek bir instance oluşturur.
 	@Autowired
-	public ProductManager(ProductDao productDao) {
-		super();
-		_productDao = productDao;
-	}
+	private ProductDao _productDao;
 	
 	@Override
 	public List<Product> GetAll() {
 		return this._productDao.findAll();
 	}
-
 }

@@ -3,6 +3,7 @@ package com.talha.northwind;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,23 +16,14 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@EnableSwagger2
 @ComponentScan({"com.talha.northwind.dataAccess"})
 @ComponentScan({"com.talha.northwind.api"})
 public class NorthwindApplication {
 
 	public static void main(String[] args) {
+		new AnnotationConfigApplicationContext(ApplicationConfig.class);
 		SpringApplication.run(NorthwindApplication.class, args);
 	}
-	
-	// Bean api'leri swagger dökümanına .çeviriyor.
-/*
-	@Bean
-    public Docket api() { 
-		return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();                                          
-    }*/
 
 }

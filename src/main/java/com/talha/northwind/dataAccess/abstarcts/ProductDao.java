@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
 
 import com.talha.northwind.core.utilities.result.DataResult;
 import com.talha.northwind.entities.concretes.Product;
 import com.talha.northwind.entities.dtos.ProductWithCategoryDto;
 
 // Data access katmanı için jpa yapısı, tablo adı ve primary key türü parametre olarak yollanır.
-@EnableJpaRepositories
+@Repository
 public interface ProductDao extends JpaRepository<Product, Integer> {
 	DataResult<Product> getByProductName(String productName);
 	DataResult<Product> getByProductNameAndCategoryCategoryId(String productName, int categoryId);
