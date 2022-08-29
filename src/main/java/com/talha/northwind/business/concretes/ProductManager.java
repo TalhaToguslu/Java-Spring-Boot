@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.talha.northwind.business.abstracts.ProductService;
 import com.talha.northwind.core.utilities.result.DataResult;
+import com.talha.northwind.core.utilities.result.Result;
+import com.talha.northwind.core.utilities.result.SuccessDataResult;
+import com.talha.northwind.core.utilities.result.SuccessResult;
 import com.talha.northwind.dataAccess.abstarcts.ProductDao;
 import com.talha.northwind.entities.concretes.Product;
 import com.talha.northwind.entities.dtos.ProductWithCategoryDto;
@@ -21,7 +24,13 @@ public class ProductManager implements ProductService{
 	private ProductDao _productDao;
 	
 	@Override
-	public List<Product> GetAll() {
-		return this._productDao.findAll();
+	public DataResult<List<Product>> GetAll() {
+		return new SuccessDataResult<List<Product>>(this._productDao.findAll());
+	}
+
+	@Override
+	public Result add(Product product) {
+		_productDao.save(product);
+		return new SuccessResult("Başarılı");
 	}
 }

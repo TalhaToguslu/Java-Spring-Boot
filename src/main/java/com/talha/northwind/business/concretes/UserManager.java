@@ -10,6 +10,7 @@ import com.talha.northwind.core.dataAccess.UserDao;
 import com.talha.northwind.core.entities.User;
 import com.talha.northwind.core.utilities.result.DataResult;
 import com.talha.northwind.core.utilities.result.Result;
+import com.talha.northwind.core.utilities.result.SuccessDataResult;
 import com.talha.northwind.core.utilities.result.SuccessResult;
 
 @Service
@@ -19,14 +20,14 @@ public class UserManager implements UserService{
 	private UserDao _userDao;
 	
 	@Override
-	public User add(User user) {
+	public Result add(User user) {
 		_userDao.save(user);
-		return user;
+		return new SuccessResult("Başarılı.");
 	}
 
 	@Override
-	public List<User> getByEmail(String email) {
-		return this._userDao.getByEmail(email);
+	public DataResult<List<User>> getByEmail(String email) {
+		return new SuccessDataResult<List<User>>(this._userDao.getByEmail(email));
 	}
 
 }

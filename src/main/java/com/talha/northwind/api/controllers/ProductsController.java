@@ -2,8 +2,13 @@ package com.talha.northwind.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +31,12 @@ public class ProductsController {
 	}
 
 	@GetMapping("/getall")
-	public DataResult<List<Product>> getAll(){
-		return new SuccessDataResult<List<Product>>("zartzort", this._productService.GetAll());
+	public ResponseEntity<?> getAll(){
+		return ResponseEntity.ok(this._productService.GetAll());
+	}
+	
+	@PostMapping("/add")
+	public ResponseEntity<?> add(@Valid @RequestBody Product product){
+		return ResponseEntity.ok(_productService.add(product));
 	}
 }

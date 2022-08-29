@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -33,18 +35,25 @@ public class Product {
 	//private int categoryId;
 	
 	@Column(name="product_name")
+	@NotBlank //"" böyle gelmesin.
+	@NotNull
 	private String productName;
 	
 	@Column(name="unit_price")
+	@NotNull
 	private double unitPrice;
 	
 	@Column(name="units_in_stock")
+	@NotNull
 	private short unitsInStock;
 	
 	@Column(name="quantity_per_unit")
+	@NotBlank //"" böyle gelmesin.
+	@NotNull
 	private String quantityPerUnit;
 	
 	@ManyToOne()
 	@JoinColumn(name= "category_id")
+	@NotNull
 	private Category category;
 }
